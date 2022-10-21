@@ -20,7 +20,7 @@ st.set_page_config(
     initial_sidebar_state = 'auto'
 )
 
-st.sidebar.image('logo.png')
+st.sidebar.image('image/logo.png')
 st.sidebar.title('Flight Delay Prediction')
 st.sidebar.write('---')
 
@@ -32,7 +32,7 @@ This app predict **Fligh Delay** due to various parameters!
 st.write('---')
 
 # Loads the Dataset
-data_path = "flight_delay_prediction.csv"
+data_path = "data/flight_delay_prediction.csv"
 data_df = pd.read_csv(data_path)
 data_df = data_df.drop(['OP_CARRIER_AIRLINE_ID', 'ORIGIN_AIRPORT_ID', 'DEST_AIRPORT_ID'], axis=1)
 st.write(data_df.head(20))
@@ -89,7 +89,7 @@ y = data_df['ARR_DEL15']
 
 # to retrain
 agree = st.checkbox('Check to retrain the model')
-filename = 'finalized_model.sav'
+filename = 'model/finalized_model.sav'
 if agree:
     # Build Regression Model
     model = RandomForestRegressor()
