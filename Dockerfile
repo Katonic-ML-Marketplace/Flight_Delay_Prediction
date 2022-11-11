@@ -1,9 +1,10 @@
 FROM python:3.8.2-slim
 
 COPY app.py .
-COPY flight_delay_prediction.csv .
-COPY finalized_model.sav .
-COPY logo.png .
+COPY data/flight_delay_prediction.csv data/.
+COPY model/finalized_model.sav model/.
+COPY image/logo.png image/.
+COPY image/favicon.ico image/.
 COPY requirements.txt .
 
 RUN pip install -r requirements.txt
