@@ -1,6 +1,4 @@
 import pickle
-import requests
-from io import BytesIO
 from PIL import Image
 
 import pandas as pd
@@ -10,8 +8,7 @@ import plotly.graph_objects  as go
 from sklearn.ensemble import RandomForestRegressor
 
 
-response = requests.get(url='https://katonic.ai/favicon.ico')
-im = Image.open(BytesIO(response.content))
+im = Image.open('image/favicon.ico')
 
 st.set_page_config(
     page_title='Flight Delay Prediction App', 
@@ -114,7 +111,7 @@ if st.sidebar.button("Prediction"):
     st.header('Flight Delay Predictions')
     label = "Delay" if prediction > 0.5 else "On Time"
     st.write(f'Prediction Label: **{label}**')
-    st.write(f'Prediction Probability: **{prediction}**')
+    st.write(f'Prediction Probability: **{prediction[0]}**')
 else:
     st.warning("Please Click on Prediction")
 st.write('---')
